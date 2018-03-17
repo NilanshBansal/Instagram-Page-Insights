@@ -14,21 +14,17 @@ export default class SearchBar extends Component{
         console.log(this.state.search);
     }
     getPageDetails(){
-        console.log(this.state.search);
-        Meteor.call("get_insta_id",(err,res)=>{
-            if(err){console.log(err);}
+        let token=localStorage.getItem('token');
+        Meteor.call("get_page_insights",this.state.search,token,(err,res)=>{
+            if(err){
+                console.log("err: ",err);
+            }
             else{
-                let accountId=res.data.instagram_business_account.id;
-                console.log(accountId);
-                Meteor.call("get_page_details",this.state.search,accountId,(error,response)=>{
-                    if(error){console.log(error);}
-                    else{
-                        console.log(response);
-                    }
-                })
+                console.log("res: ",res);
             }
         })
     }
+    
     render(){
         return ( 
         <div className="container"><br />
