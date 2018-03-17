@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SearchBar from "../../ui/SearchBar";
 
 export default App=(props)=>{
 
 
-    return (<h1>Helllo</h1>);
+    return (<div><SearchBar /></div>);
 }
 
 Meteor.startup(()=>{
