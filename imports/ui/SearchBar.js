@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
+import List from "./List";
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -22,6 +23,7 @@ export default class SearchBar extends Component {
                 }
                 if (result) {
                     console.log("result from db: ", result);
+                    this.setState({data:result});
                 }
                 else {
                     Meteor.call("get_page_insights", this.state.search, token, (err, res) => {
@@ -36,6 +38,7 @@ export default class SearchBar extends Component {
                                 }
                                 else {
                                     console.log(response);
+                                    this.setState({data:response});
                                 }
                             })
                         }
@@ -55,7 +58,7 @@ export default class SearchBar extends Component {
                 <label>SEARCH</label>
                 <input type="text" className="form-control" value={this.state.search} placeholder="search string" onChange={this.onChange} />
                 <button className="btn btn-primary btn-lg" onClick={this.getPageDetails}>Search</button>
-                {/* <List data={this.state.data}/> */}
+                <List data={this.state.data}/>
             </div>
 
         );
