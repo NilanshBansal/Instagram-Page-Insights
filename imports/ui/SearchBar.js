@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-
+import {Meteor} from "meteor/meteor";
 
 export default class SearchBar extends Component{
     constructor(props){
@@ -15,14 +15,22 @@ export default class SearchBar extends Component{
     }
     getPageDetails(){
         let token=localStorage.getItem('token');
-        Meteor.call("get_page_insights",this.state.search,token,(err,res)=>{
-            if(err){
-                console.log("err: ",err);
-            }
-            else{
-                console.log("res: ",res);
-            }
-        })
+        if(token){
+            
+            Meteor.call("get_page_insights",this.state.search,token,(err,res)=>{
+                if(err){
+                    console.log("err: ",err);
+                }
+                else{
+                    console.log("res: ",res);
+                    
+                }
+            })
+        }
+        else{
+            throw new Meteor.Error("User not logged in !")
+        }
+        
     }
     
     render(){

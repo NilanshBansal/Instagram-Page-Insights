@@ -13,8 +13,9 @@ Meteor.methods({
     },
 
     "get_page_insights"(pageName, token) {
+        let limitResults=25;
         let baseURL = "https://graph.facebook.com/v2.12/";
-        let pagePath = `?fields=business_discovery.username(${pageName}){followers_count,media_count,media{comments_count,comment,like_count,timestamp,caption}}`
+        let pagePath = `?fields=business_discovery.username(${pageName}){followers_count,media_count,media.limit(${limitResults}){comments_count,comment,like_count,timestamp,caption}}`
         let instaBusinessID;
 
         try {
