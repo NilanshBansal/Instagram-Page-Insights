@@ -40,11 +40,12 @@ export default class Fblogin extends Component {
 
     
     logout() {
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('userID');
+        this.setState({token:null,userID:null});
         window.FB.logout(function (response) {
             console.log("Successfully logged out!");
-            window.localStorage.removeItem('token');
-            window.localStorage.removeItem('userID');
-            this.setState({token:null,userID:null});
+            
         }.bind(this));
     }
 
