@@ -11,5 +11,8 @@ Meteor.methods({
             media_count:pageInsights.business_discovery.media_count,
             data:pageInsights.business_discovery.media.data
         });
+    },
+    "Pages.find"(searchQuery){
+        return Pages.findOne({searchQuery});
     }   
 })
