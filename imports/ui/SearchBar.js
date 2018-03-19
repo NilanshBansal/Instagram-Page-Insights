@@ -32,13 +32,23 @@ export default class SearchBar extends Component {
                         }
                         else {
                             console.log("res: ", res);
+                            let obj={};
+                            obj.searchQuery=this.state.search;
+                            if(res && res.data && res.data.business_discovery){
+                                obj.followers_count=res.data.business_discovery.followers_count;
+                                obj.media_count=res.data.business_discovery.media_count;
+                                if(res.data.business_discovery.media)
+                                    obj.data=res.data.business_discovery.media.data;
+                            }
+                            
+                            this.setState({data:obj});
                             Meteor.call("Pages.insert", this.state.search, res.data, (error, response) => {
                                 if (error) {
                                     console.log(error);
                                 }
                                 else {
                                     console.log(response);
-                                    this.setState({data:response});
+                                    
                                 }
                             })
                         }
