@@ -15,9 +15,9 @@ export default List=(props)=>{
 
     return (
         <div className="container">
-        <h1>{data && data.searchQuery}</h1>
-        <h1>Followers Count: {data && data.followers_count?data.followers_count:[]}</h1>
-        <h1>Media Count: {data && data.media_count?data.media_count:[]}</h1>
+        <h1>{data && data.searchQuery?data.searchQuery.toUpperCase():[]}</h1>
+        <h3>Followers Count: {data && data.followers_count?data.followers_count:[]}</h3>
+        <h3>Media Count: {data && data.media_count?data.media_count:[]}</h3>
         <table className="table table-bordered table-hover">
             <thead><tr><th>S.No</th><th>Caption</th><th>Comments</th><th>Likes</th><th>Created At</th></tr></thead>
             <tbody>{renderListItems(data)}</tbody>

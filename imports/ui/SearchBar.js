@@ -12,7 +12,6 @@ export default class SearchBar extends Component {
 
     onChange(event) {
         this.setState({ search: event.target.value });
-        console.log(this.state.search);
     }
     getPageDetails() {
         let token = localStorage.getItem('token');
