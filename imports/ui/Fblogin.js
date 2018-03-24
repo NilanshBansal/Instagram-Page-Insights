@@ -19,7 +19,7 @@ export default class Fblogin extends Component {
                 console.log('User cancelled login or did not fully authorize.');
             }
         }.bind(this), {
-                scope: 'manage_pages, read_insights,instagram_basic,instagram_manage_insights',
+                scope: 'manage_pages, read_insights,instagram_basic,instagram_manage_insights,instagram_manage_comments',
                 return_scopes: true
             });
     }

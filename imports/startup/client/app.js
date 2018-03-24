@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import ReactDOM from "react-dom";
 import SearchBar from "../../ui/SearchBar";
 import Fblogin from "../../ui/Fblogin";
+import Tagged from "../../ui/Tagged";
 
  export default class App extends Component{
      constructor(props){
@@ -33,7 +34,7 @@ import Fblogin from "../../ui/Fblogin";
     }
 
      render(){
-        return (<div><Fblogin /><SearchBar /></div>);
+        return (<div><Fblogin /><Tagged /><br /><SearchBar /></div>);
      }
  }
 
